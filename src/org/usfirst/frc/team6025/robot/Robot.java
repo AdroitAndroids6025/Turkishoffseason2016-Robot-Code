@@ -110,7 +110,7 @@ public class Robot extends IterativeRobot {
 			if (sagStick.getRawButton(4)) {
 				if(kol < 4)
 				  {
-					  otonomkol++;
+					  otonomkol++; //Simiti daha iyi kavrayabilmesi için kaldırdığı anda simiti sıkıştırmak için(otomatik yapması için. 124.satırdan sonraki kodlarda ise manuel yapmaya yarıyor.) 
 					  kolcuk.set(1);
 				  }
 					  else{
