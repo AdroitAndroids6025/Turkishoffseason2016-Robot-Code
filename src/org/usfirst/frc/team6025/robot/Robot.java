@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 public class Robot extends IterativeRobot {
 	Solenoid elac = new Solenoid(0);
@@ -17,7 +18,7 @@ public class Robot extends IterativeRobot {
 	Talon sagrampa2 = new Talon(5);
 	Victor solrampa = new Victor(7);
 	Talon solrampa2 = new Talon(6);
-
+        DigitalInput durdurac = new DigitalInput(0)
 
 	int gidis;
 	int otonomkol;
@@ -121,7 +122,11 @@ public class Robot extends IterativeRobot {
 				  }
 
 			}
-			if (sagStick.getRawButton(1)) {
+			if(durdurac.get()) //Stopper robotun kolu belirli bir yere kadar kalktığında switch tarafından algılandığında kendisini durdurması için.
+                          {
+                                kolcuk.set(0.0);
+                          }
+			else if (sagStick.getRawButton(1)) {
 				kolcuk.set(-0.2);
 
 			}
@@ -130,7 +135,7 @@ public class Robot extends IterativeRobot {
 
 			}
 			else {
-				kolcuk.set(0.2);
+				kolcuk.set(0.2); // kolun backdrive atmaması için
 			}
 			/*
 			 * Sag rampanin milini kontrol eden motor
